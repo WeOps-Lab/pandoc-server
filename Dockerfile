@@ -18,10 +18,4 @@ RUN pip install -r requirements.in
 ADD ./latex ./latex
 ADD ./server.py ./server.py
 
-RUN pip install neverland-compiler
-RUN neverland-compiler -i server.py -d dist -v 3 -c server.py &&\
-   mv ./dist /tmp/dist &&\
-   rm -rf /app/* &&\
-   mv /tmp/dist/* /app/
-   
 CMD ["supervisord", "-n"]
